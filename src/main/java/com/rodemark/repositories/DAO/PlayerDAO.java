@@ -9,7 +9,7 @@ import org.hibernate.query.Query;
 import java.util.List;
 
 public class PlayerDAO {
-    public Player findById(int id){
+    public Player findById(Long id){
         return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Player.class, id);
     }
     public List<Player> findAll(){
