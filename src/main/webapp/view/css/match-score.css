@@ -1,0 +1,64 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    align-items: center; /* Центрируем содержимое по вертикали */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+}
+
+th, td {
+    padding: 25px; /* Увеличиваем отступы для увеличения высоты столбцов */
+    text-align: center;
+    position: relative; /* Позиционируем ячейки для правильного позиционирования кнопок */
+}
+
+th {
+    background-color: #4e9351;
+    color: white; /* Белый текст для строки заголовка */
+    font-size:25px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+input[type="text"] {
+    width:  250px;
+    height: 80px;
+    padding: 0px;
+    box-sizing: border-box;
+    border: none;
+    font-size:35px;
+    color: #333333;
+    /*width: calc(100% - 20px); !* Ширина формы для ввода с учетом отступов *!*/
+    /*padding: 5px;*/
+    /*box-sizing: border-box;*/
+    background-color: #f0f0f0; /* Цвет поля для ввода равен цвету фона */
+    /*border: none; !* Убираем границы поля *!*/
+}
+
+.add-point-button {
+    position: absolute; /* Абсолютное позиционирование кнопок */
+    top: 50%; /* Располагаем по вертикали на 50% относительно родительского контейнера */
+    left: 50%; /* Располагаем по горизонтали на 50% относительно родительского контейнера */
+    transform: translate(-50%, -50%); /* Центрируем относительно своего центра */
+    padding: 5px 10px;
+    background-color: #327335;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add-point-button:hover {
+    background-color:  #4e9351;
+}

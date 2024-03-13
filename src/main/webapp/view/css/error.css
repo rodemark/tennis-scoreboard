@@ -1,0 +1,35 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    align-items: center; /* Центрируем содержимое по вертикали */
+}
+
+.main_container {
+    width: 80%;
+    margin: 100px auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.header h1 {
+    color: #333;
+    text-align: center;
+}
+
+.links_container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.links_container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.links_container a:hover {
+    text-decoration: underline;
+}

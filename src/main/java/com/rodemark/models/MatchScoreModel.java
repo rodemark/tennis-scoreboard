@@ -1,4 +1,4 @@
-package com.rodemark.DTO;
+package com.rodemark.models;
 
 import com.rodemark.models.Player;
 import com.rodemark.models.for_tennis.Score;
@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Setter
 @Getter
-public class MatchDTO {
+public class MatchScoreModel {
     Player playerFirst;
     Player playerSecond;
     UUID uuid = UUID.randomUUID();
