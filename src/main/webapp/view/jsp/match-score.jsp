@@ -1,4 +1,10 @@
-<jsp:useBean id="match" scope="request" type="com.rodemark.models.MatchScoreModel"/>
+<%--
+  Created by IntelliJ IDEA.
+  User: rodemark
+  Date: 11.03.2024
+  Time: 08:17
+  To change this template use File | Settings | File Templates.
+--%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -15,7 +21,6 @@
 </style>
 
 <body>
-
 <table border="1">
     <tr>
         <th>Players</th>
@@ -27,22 +32,22 @@
     <tr>
         <td class="player-name">
             <label>
-                <input type="text" name="player1_name" value="${match.playerFirst.name}" readonly>
+                <input type="text" name="player1_name" value="${requestScope.match.playerFirst.name}" readonly>
             </label>
         </td>
         <td>
             <label>
-                <input type="text" name="player1_sets" value="${match.score.sets.get(1)}" readonly>
+                <input type="text" name="player1_sets" value="${requestScope.match.score.winSetsPlayer1}" readonly>
             </label>
         </td>
         <td>
             <label>
-                <input type="text" name="player1_games" value="${match.score.currentSet.games.get(1)}" readonly>
+                <input type="text" name="player1_games" value="${requestScope.match.score.winGamesPlayer1}" readonly>
             </label>
         </td>
         <td>
             <label>
-                <input type="text" name="player1_points" value="${match.score.currentSet.currentGame.points.get(1)}" readonly>
+                <input type="text" name="player1_points" value="${requestScope.match.score.winPointsPlayer1}" readonly>
             </label>
         </td>
         <td>
@@ -52,22 +57,22 @@
     <tr>
         <td class="player-name">
             <label>
-                <input type="text" name="player2_name" value="${match.playerSecond.name}" readonly>
+                <input type="text" name="player2_name" value="${requestScope.match.playerSecond.name}" readonly>
             </label>
         </td>
         <td>
             <label>
-                <input type="text" name="player2_sets" value=" " readonly>
+                <input type="text" name="player2_sets" value="${requestScope.match.score.winSetsPlayer2}" readonly>
             </label>
         </td>
         <td>
             <label>
-                <input type="text" name="player2_games" value=" " readonly>
+                <input type="text" name="player2_games" value="${requestScope.match.score.winGamesPlayer2}" readonly>
             </label>
         </td>
         <td>
             <label>
-                <input type="text" name="player2_points" value=" " readonly>
+                <input type="text" name="player2_points" value="${requestScope.match.score.winPointsPlayer2}" readonly>
             </label>
         </td>
         <td>

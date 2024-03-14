@@ -33,6 +33,8 @@ public class NewMatchController extends HttpServlet {
             MatchScoreModel matchScoreModel = new MatchScoreModel();
             matchScoreModel.setPlayerFirst(new Player(nameOfPlayerFirst));
             matchScoreModel.setPlayerSecond(new Player(nameOfPlayerSecond));
+
+
             ongoingMatchesService.startNewMatch(matchScoreModel);
             String redirectUrl = String.format("%s/match-score?uuid=%s", request.getContextPath(), matchScoreModel.getUuid());
             response.sendRedirect(redirectUrl);

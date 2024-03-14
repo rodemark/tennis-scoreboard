@@ -17,11 +17,11 @@ import java.util.UUID;
 @WebServlet(name = "MatchScoreController", value = "/match-score")
 public class MatchScoreController extends HttpServlet {
     private OngoingMatchesService ongoingMatchesService;
-    private MatchScoreService matchScoreService;
+
     @Override
     public void init(ServletConfig config) {
         ongoingMatchesService = AppInitializer.getOngoingMatchesService();
-        matchScoreService = new MatchScoreService(ongoingMatchesService);
+        MatchScoreService matchScoreService = new MatchScoreService(ongoingMatchesService);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws SecurityException, ServletException, IOException {
