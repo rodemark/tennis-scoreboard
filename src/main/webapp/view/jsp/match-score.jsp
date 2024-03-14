@@ -29,6 +29,7 @@
         <th>Points</th>
         <th></th> <!-- Пустая ячейка для кнопок -->
     </tr>
+
     <tr>
         <td class="player-name">
             <label>
@@ -51,9 +52,13 @@
             </label>
         </td>
         <td>
-            <button class="add-point-button">Add Point</button>
+            <form method="POST" action="${pageContext.request.contextPath}/match-score?uuid=${requestScope.match.uuidStr}">
+                <input type="hidden" name="selectedID" value="1">
+                <button type="submit" class="award" >Add point 1</button>
+            </form>
         </td>
     </tr>
+
     <tr>
         <td class="player-name">
             <label>
@@ -76,7 +81,10 @@
             </label>
         </td>
         <td>
-            <button class="add-point-button">Add Point</button>
+            <form method="POST" action="${pageContext.request.contextPath}/match-score?uuid=${requestScope.match.uuidStr}">
+                <input type="hidden" name="selectedID" value="2">
+                <button type="submit" class="award" style="width: 100%">Add Point 2</button>
+            </form>
         </td>
     </tr>
 </table>

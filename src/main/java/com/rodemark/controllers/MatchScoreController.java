@@ -1,6 +1,7 @@
 package com.rodemark.controllers;
 
 import com.rodemark.models.MatchScoreModel;
+import com.rodemark.models.for_tennis.Status;
 import com.rodemark.other.AppInitializer;
 import com.rodemark.services.MatchScoreService;
 import com.rodemark.services.OngoingMatchesService;
@@ -17,11 +18,12 @@ import java.util.UUID;
 @WebServlet(name = "MatchScoreController", value = "/match-score")
 public class MatchScoreController extends HttpServlet {
     private OngoingMatchesService ongoingMatchesService;
+    private MatchScoreService matchScoreService;
 
     @Override
     public void init(ServletConfig config) {
         ongoingMatchesService = AppInitializer.getOngoingMatchesService();
-        MatchScoreService matchScoreService = new MatchScoreService(ongoingMatchesService);
+        matchScoreService = new MatchScoreService(ongoingMatchesService);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws SecurityException, ServletException, IOException {
@@ -39,7 +41,18 @@ public class MatchScoreController extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws SecurityException, ServletException, IOException {
         try {
             UUID uuid = UUID.fromString(request.getParameter("uuid"));
-            MatchScoreModel currentMatch = ongoingMatchesService.getMatchByUUID(uuid);
+            MatchScoreModel match = ongoingMatchesService.getMatchByUUID(uuid);
+
+            Integer playerID = Integer.valueOf(request.getParameter("selectedID"));
+            Status status = matchScoreService.addScoreToPlayer(playerID, uuid);
+
+            if (status.equals(Status.IN_PROGRESS)){
+                request.setAttribute("match", match);
+                response.sendRedirect(request.getContextPath() + "/match-score?uuid=" + uuid);
+            }
+            else{
+                response.sendRedirect(request.getContextPath() + "/");
+            }
 
         }
         catch (Exception exception){

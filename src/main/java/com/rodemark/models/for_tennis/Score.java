@@ -72,6 +72,6 @@ public class Score {
         this.winGamesPlayer2 = currentSet.getGames().get(2);
 
         this.winPointsPlayer1 = currentSet.getCurrentGame().getPlayersPoints(1);
-        this.winPointsPlayer2 = currentSet.getCurrentGame().getPlayersPoints(1);
+        this.winPointsPlayer2 = currentSet.getCurrentGame().getPlayersPoints(2);
     }
 }
