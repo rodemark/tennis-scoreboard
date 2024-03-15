@@ -3,6 +3,7 @@ package com.rodemark.models.for_tennis;
 import lombok.Getter;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 @Getter
 public class Score {
@@ -57,9 +58,11 @@ public class Score {
                 status = player1Score > player2Score
                         ? Status.PLAYER_1_WIN
                         : Status.PLAYER_2_WIN;
+                updateStatistics();
             } else {
                 currentSet = new Set();
                 setsDetailsHistory.put(setsDetailsHistory.size() + 1, currentSet);
+                updateStatistics();
             }
         }
     }
@@ -74,4 +77,26 @@ public class Score {
         this.winPointsPlayer1 = currentSet.getCurrentGame().getPlayersPoints(1);
         this.winPointsPlayer2 = currentSet.getCurrentGame().getPlayersPoints(2);
     }
+
+    public String getFormattedPoints(int points1, int points2) {
+        if (currentSet.getCurrentGame() instanceof BaseGame){
+            if (points1 == 0) {
+                return "0";
+            } else if (points1 == 1) {
+                return "15";
+            } else if (points1 == 2) {
+                return "30";
+            } else if (points1 == 3) {
+                return "40";
+            } else if (points1 - points2 == 1){
+                return "Ad";
+            } else {
+                return "40";
+            }
+        }
+        else {
+            return String.valueOf(points1);
+        }
+    }
+
 }

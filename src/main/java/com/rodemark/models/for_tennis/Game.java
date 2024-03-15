@@ -25,7 +25,7 @@ public abstract class Game {
     }
 
     public void addPoint(int indexPlayer){
-        points.put(indexPlayer, points.get(indexPlayer) + 1);
+        points.replace(indexPlayer, points.get(indexPlayer) + 1);
         updateGameStatus();
     }
 

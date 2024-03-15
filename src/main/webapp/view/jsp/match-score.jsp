@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.rodemark.models.MatchScoreModel" %><%--
   Created by IntelliJ IDEA.
   User: rodemark
   Date: 11.03.2024
@@ -30,6 +30,10 @@
         <th></th> <!-- Пустая ячейка для кнопок -->
     </tr>
 
+    <%
+
+    %>
+
     <tr>
         <td class="player-name">
             <label>
@@ -48,13 +52,13 @@
         </td>
         <td>
             <label>
-                <input type="text" name="player1_points" value="${requestScope.match.score.winPointsPlayer1}" readonly>
+                <input type="text" name="player1_points" value="${requestScope.match.score.getFormattedPoints(requestScope.match.score.winPointsPlayer1, requestScope.match.score.winPointsPlayer2)}" readonly>
             </label>
         </td>
         <td>
             <form method="POST" action="${pageContext.request.contextPath}/match-score?uuid=${requestScope.match.uuidStr}">
                 <input type="hidden" name="selectedID" value="1">
-                <button type="submit" class="award" >Add point 1</button>
+                <button type="submit" class="award" >Add point</button>
             </form>
         </td>
     </tr>
@@ -77,13 +81,13 @@
         </td>
         <td>
             <label>
-                <input type="text" name="player2_points" value="${requestScope.match.score.winPointsPlayer2}" readonly>
+                <input type="text" name="player2_points" value="${requestScope.match.score.getFormattedPoints(requestScope.match.score.winPointsPlayer2, requestScope.match.score.winPointsPlayer1)}" readonly>
             </label>
         </td>
         <td>
             <form method="POST" action="${pageContext.request.contextPath}/match-score?uuid=${requestScope.match.uuidStr}">
                 <input type="hidden" name="selectedID" value="2">
-                <button type="submit" class="award" style="width: 100%">Add Point 2</button>
+                <button type="submit" class="award" style="width: 100%">Add Point</button>
             </form>
         </td>
     </tr>

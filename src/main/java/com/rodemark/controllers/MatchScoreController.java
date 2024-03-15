@@ -3,6 +3,7 @@ package com.rodemark.controllers;
 import com.rodemark.models.MatchScoreModel;
 import com.rodemark.models.for_tennis.Status;
 import com.rodemark.other.AppInitializer;
+import com.rodemark.services.FinishedMatchesService;
 import com.rodemark.services.MatchScoreService;
 import com.rodemark.services.OngoingMatchesService;
 import jakarta.servlet.ServletConfig;
@@ -19,11 +20,13 @@ import java.util.UUID;
 public class MatchScoreController extends HttpServlet {
     private OngoingMatchesService ongoingMatchesService;
     private MatchScoreService matchScoreService;
+    private FinishedMatchesService finishedMatchesService;
 
     @Override
     public void init(ServletConfig config) {
         ongoingMatchesService = AppInitializer.getOngoingMatchesService();
         matchScoreService = new MatchScoreService(ongoingMatchesService);
+        finishedMatchesService = new FinishedMatchesService(ongoingMatchesService);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws SecurityException, ServletException, IOException {
@@ -43,7 +46,7 @@ public class MatchScoreController extends HttpServlet {
             UUID uuid = UUID.fromString(request.getParameter("uuid"));
             MatchScoreModel match = ongoingMatchesService.getMatchByUUID(uuid);
 
-            Integer playerID = Integer.valueOf(request.getParameter("selectedID"));
+            int playerID = Integer.parseInt(request.getParameter("selectedID"));
             Status status = matchScoreService.addScoreToPlayer(playerID, uuid);
 
             if (status.equals(Status.IN_PROGRESS)){
@@ -51,7 +54,12 @@ public class MatchScoreController extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/match-score?uuid=" + uuid);
             }
             else{
-                response.sendRedirect(request.getContextPath() + "/");
+                finishedMatchesService.finish(match, playerID);
+                ongoingMatchesService.removeMatch(uuid);
+
+                String winnerName = finishedMatchesService.getWinnerName(match, playerID);
+                String redirectUrl = String.format("%s/winner?winnerName=%s", request.getContextPath(), winnerName);
+                response.sendRedirect(redirectUrl);
             }
 
         }

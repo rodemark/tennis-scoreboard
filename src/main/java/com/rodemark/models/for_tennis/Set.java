@@ -37,10 +37,10 @@ public class Set {
     public void updateSetStatus(){
         if (!currentGame.getGameStatus().equals(Status.IN_PROGRESS)){
             if (currentGame.getGameStatus().equals(Status.PLAYER_1_WIN)){
-                games.put(PLAYER1, games.get(PLAYER1) + 1);
+                games.replace(PLAYER1, games.get(PLAYER1) + 1);
             }
             else{
-                games.put(PLAYER2, games.get(PLAYER2) + 1);
+                games.replace(PLAYER2, games.get(PLAYER2) + 1);
             }
 
             int player1Games = games.get(PLAYER1);
