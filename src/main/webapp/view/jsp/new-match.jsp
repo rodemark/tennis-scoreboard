@@ -32,6 +32,9 @@
 
         <input type="submit" value="Start Match">
     </form>
+    <div class="links_container">
+        <a href="${pageContext.request.contextPath}/">Go back to the main page</a>
+    </div>
 
 </div>
 </body>

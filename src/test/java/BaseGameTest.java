@@ -2,7 +2,6 @@ import com.rodemark.models.for_tennis.BaseGame;
 import com.rodemark.models.for_tennis.Status;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
 public class BaseGameTest {
 
     private final int AMOUNT_POINTS = 4;

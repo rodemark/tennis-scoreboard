@@ -14,6 +14,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 
 @WebServlet(name = "MatchScoreController", value = "/match-score")
@@ -55,10 +57,10 @@ public class MatchScoreController extends HttpServlet {
             }
             else{
                 finishedMatchesService.finish(match, playerID);
-                ongoingMatchesService.removeMatch(uuid);
-
                 String winnerName = finishedMatchesService.getWinnerName(match, playerID);
-                String redirectUrl = String.format("%s/winner?winnerName=%s", request.getContextPath(), winnerName);
+
+                String encodedName = URLEncoder.encode(winnerName, StandardCharsets.UTF_8);
+                String redirectUrl = String.format("%s/winner?winnerName=%s&uuid=%s", request.getContextPath(), encodedName, uuid);
                 response.sendRedirect(redirectUrl);
             }
 

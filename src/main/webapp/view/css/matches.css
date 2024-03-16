@@ -1,0 +1,71 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    align-items: center; /* Центрируем содержимое по вертикали */
+}
+
+.container {
+    width: 80%; /* ширина контейнера */
+    margin: 0 auto; /* автоматический отступ слева и справа для центрирования */
+    background-color: #f0f0f0; /* фон контейнера */
+    padding: 20px; /* отступы вокруг контейнера */
+}
+
+/* Стиль для кнопки */
+.search-button {
+    background-color: #327335;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+/* Стиль для кнопки при наведении */
+.search-button:hover {
+    background-color:  #4e9351;
+}
+
+.search-container {
+    display: flex; /* Используем flexbox для центрирования */
+    align-items: center; /* Центрируем элементы по вертикали */
+}
+
+.search-input {
+    flex: 1; /* Растягиваем инпут на всю доступную ширину */
+    margin-right: 10px; /* Добавляем небольшой отступ между инпутом и кнопкой */
+}
+
+
+/* Стили для таблицы */
+table {
+    width: 100%; /* ширина таблицы */
+    border-collapse: collapse; /* объединение границ */
+}
+
+th, td {
+    border: 1px solid #ddd; /* граница ячеек */
+    padding: 8px; /* отступы внутри ячеек */
+    text-align: left; /* выравнивание текста по левому краю */
+}
+
+th {
+    background-color: #327335; /* цвет фона заголовков */
+    color: white; /* цвет текста заголовков */
+}

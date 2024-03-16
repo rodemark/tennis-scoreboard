@@ -12,6 +12,14 @@ public class PlayerDAO {
     public Player findById(Long id){
         return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Player.class, id);
     }
+
+    public List<Player> findByName(String name){
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        String hql = "FROM Player player WHERE player.name = :name";
+        Query<Player> query = session.createQuery(hql, Player.class);
+        query.setParameter("name", name);
+        return query.list();
+    }
     public List<Player> findAll(){
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         String hql = "FROM Player ";

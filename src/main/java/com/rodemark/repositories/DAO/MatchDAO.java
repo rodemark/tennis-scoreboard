@@ -28,7 +28,6 @@ public class MatchDAO {
         return query.list();
     }
 
-
     public void save(Match match){
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();

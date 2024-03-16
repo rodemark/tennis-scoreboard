@@ -1,6 +1,5 @@
 package com.rodemark.models;
 
-import com.rodemark.models.Player;
 import com.rodemark.models.for_tennis.Score;
 import lombok.Getter;
 import lombok.Setter;

@@ -3,7 +3,6 @@ package com.rodemark.models.for_tennis;
 import lombok.Getter;
 
 import java.util.HashMap;
-import java.util.Objects;
 
 @Getter
 public class Score {
@@ -43,10 +42,10 @@ public class Score {
     public void addPoint(Integer playerIndex) {
         currentSet.addPoint(playerIndex);
         updateStatistics();
-        updateState();
+        updateStatus();
     }
 
-    public void updateState() {
+    public void updateStatus() {
         if (!currentSet.getSetStatus().equals(Status.IN_PROGRESS)) {
             int currentPoint = sets.get(currentSet.getSetStatus().ordinal());
             sets.replace(currentSet.getSetStatus().ordinal(), currentPoint + 1);
