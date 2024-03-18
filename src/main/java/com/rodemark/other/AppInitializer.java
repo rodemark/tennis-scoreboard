@@ -4,11 +4,19 @@ import com.rodemark.services.OngoingMatchesService;
 import lombok.Getter;
 
 public class AppInitializer {
-    @Getter
-    private static OngoingMatchesService ongoingMatchesService;
+    private static volatile OngoingMatchesService ongoingMatchesService;
 
-    public static void init() {
-        ongoingMatchesService = new OngoingMatchesService();
+    private AppInitializer() {}
+
+    public static OngoingMatchesService getOngoingMatchesService() {
+        if (ongoingMatchesService == null) {
+            synchronized (AppInitializer.class) {
+                if (ongoingMatchesService == null) {
+                    ongoingMatchesService = new OngoingMatchesService();
+                }
+            }
+        }
+        return ongoingMatchesService;
     }
 
 }

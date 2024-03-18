@@ -1,6 +1,6 @@
 package com.rodemark.controllers;
 
-import com.rodemark.other.AppInitializer;
+
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,8 +15,9 @@ public class MainController extends HttpServlet {
 
     @Override
     public void init(ServletConfig config) {
-        AppInitializer.init();
+
     }
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("view/jsp/main.jsp").forward(request, response);
     }
