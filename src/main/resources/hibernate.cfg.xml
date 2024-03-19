@@ -2,14 +2,12 @@
     <session-factory>
         <!-- Конфигурация подключения к базе данных -->
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-
         <!--        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/tennis_scoreboard_db</property>-->
-
-        <property name="hibernate.connection.url">jdbc:postgresql://192.168.3.9:5432/tennis_scoreboard_db</property>
+        <!--        <property name="hibernate.connection.url">jdbc:postgresql://192.168.3.9:5432/tennis_scoreboard_db</property>-->
+        <property name="hibernate.connection.url">jdbc:postgresql://postgres:5432/tennis_scoreboard_db</property>
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.password">postgres</property>
 
-        <!-- Другие настройки -->
-        <!-- Другие настройки Hibernate, такие, как генераторы, кэш и т. д. -->
+
     </session-factory>
 </hibernate-configuration>

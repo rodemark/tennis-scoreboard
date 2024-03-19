@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15.0
+    container_name: tennis-db-container
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - my-network
+
+  tomcat:
+    build:
+      context: ~/tennis-scoreboard/
+      dockerfile: Dockerfile
+    container_name: tennis-container
+    ports:
+      - "8080:8080"
+    networks:
+      - my-network
+    depends_on:
+      - postgres
+
+networks:
+  my-network:
+    driver: bridge
